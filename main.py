@@ -1,7 +1,7 @@
 import csv
 import re
 
-flats_list = list()
+flats_list = []
 
 with open('output.csv', newline='', encoding = "utf-8") as csvfile:
 	flats_csv = csv.reader(csvfile, delimiter=';')
@@ -44,11 +44,11 @@ with open('output.csv', newline='', encoding = "utf-8") as csvfile:
 # # 2) Измените код, который создавал словарь для поиска квартир по метро так, чтобы значением словаря был не список ID квартир, а список описаний квартир в виде словаря, который вы сделали в п.1 
 subway_dict = {}
 for flat in flats_list:
-  subway = flat[3].replace("м.", "")
-  if subway not in subway_dict.keys():
-    subway_dict[subway] = list()
-  flat_info = {"id": flat[0], "rooms": flat[1], "type": flat[2], "price": flat[11]}
-  subway_dict[subway].append(flat_info)
+	subway = flat[3].replace("м.", "")
+	if subway not in subway_dict.keys():
+		subway_dict[subway] = []
+	flat_info = {"id": flat[0], "rooms": flat[1], "type": flat[2], "price": flat[11]}
+	subway_dict[subway].append(flat_info)
 # print(subway_dict)
 
 # 3) Самостоятельно напишите код, который подсчитывает и выводит, сколько квартир нашлось у каждого метро.
